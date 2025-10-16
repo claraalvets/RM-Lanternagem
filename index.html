@@ -1,0 +1,1597 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RM Lanternagem e Pintura</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #8B1538;
+            --secondary-color: #2E8B57;
+            --accent-color: #FFD7DC;
+            --text-color: #1D1B1C;
+            --light-bg: #FFFBFF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        /* Header */
+        .app-bar {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 16px 24px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .app-bar h1 {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .admin-btn {
+            background-color: rgba(255,255,255,0.2);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .admin-btn:hover {
+            background-color: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            margin-bottom: 24px;
+        }
+
+        .hero-text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 40px;
+            color: white;
+            z-index: 10;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+        }
+
+        .hero-text h2 {
+            font-size: 32px;
+            font-weight: 300;
+            margin: 0;
+        }
+
+        .hero-text h3 {
+            font-size: 48px;
+            font-weight: bold;
+            margin: 0 0 20px 0;
+        }
+
+        .hero-text p {
+            font-size: 16px;
+            color: rgba(255,255,255,0.95);
+            margin: 0 0 20px 0;
+            font-weight: 500;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 16px 24px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            max-width: 250px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #7a1230;
+        }
+
+        .btn-contact {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .btn-contact:hover {
+            background-color: #247a48;
+        }
+
+        /* Carousel Section */
+        .carousel-section {
+            border-radius: 0;
+            position: relative;
+        }
+
+        .carousel-item img {
+            height: 600px;
+            object-fit: cover;
+        }
+
+        .carousel-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.4) 100%);
+            z-index: 1;
+        }
+
+        /* Sections */
+        .section {
+            padding: 0 24px 32px 24px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .section-title .material-icons {
+            color: var(--primary-color);
+            font-size: 28px;
+        }
+
+        .section-title h2 {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--text-color);
+            margin: 0;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .service-image {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .service-icon {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px;
+            border-radius: 8px;
+        }
+
+        .service-content {
+            padding: 16px;
+        }
+
+        .service-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0 0 8px 0;
+            line-height: 1.2;
+        }
+
+        .service-description {
+            font-size: 14px;
+            color: #666;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        /* About Section */
+        .about-section {
+            margin: 0 40px 60px 40px;
+            padding: 40px;
+            background-color: var(--accent-color);
+            border-radius: 20px;
+        }
+
+        .about-text {
+            font-size: 16px;
+            color: #3E0013;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .info-cards {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+        }
+
+        .info-card {
+            flex: 1;
+            background-color: rgba(255,255,255,0.8);
+            padding: 16px;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .info-card:hover {
+            transform: scale(1.05);
+        }
+
+        .info-card .material-icons {
+            color: var(--primary-color);
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .info-card .number {
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--text-color);
+            margin: 0;
+        }
+
+        .info-card .label {
+            font-size: 12px;
+            color: var(--text-color);
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        /* Contact Section */
+        .contact-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 12px 0;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.2s;
+        }
+
+        .contact-item:hover {
+            background-color: rgba(139, 21, 56, 0.05);
+        }
+
+        .contact-icon-wrapper {
+            background-color: rgba(139, 21, 56, 0.1);
+            padding: 12px;
+            border-radius: 12px;
+        }
+
+        .contact-icon {
+            color: var(--primary-color);
+            font-size: 24px;
+        }
+
+        .contact-info h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0 0 4px 0;
+        }
+
+        .contact-info p {
+            font-size: 14px;
+            color: rgba(29, 27, 28, 0.7);
+            margin: 0;
+            white-space: pre-line;
+        }
+
+        .divider {
+            height: 1px;
+            background-color: #E0E0E0;
+            margin: 16px 0;
+        }
+
+        .whatsapp-btn {
+            width: 100%;
+            background-color: #25D366;
+            color: white;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: background-color 0.2s;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #22C55E;
+        }
+
+        /* Form Section */
+        .form-section {
+            padding: 40px;
+            background-color: #f8f8f8;
+            border-radius: 20px;
+            margin: 0 40px 60px 40px;
+        }
+
+        .form-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .form-title .material-icons {
+            color: var(--primary-color);
+            font-size: 28px;
+        }
+
+        .form-title h2 {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--text-color);
+            margin: 0;
+        }
+
+        .service-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            transition: border-color 0.2s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(139, 21, 56, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            grid-column: 1 / -1;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 16px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .form-submit:hover {
+            background-color: #7a1230;
+        }
+
+        .material-icons {
+            font-size: 20px;
+        }
+
+        /* Alert Styles */
+        .alert {
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            display: none;
+        }
+
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 8px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Admin Panel */
+        .admin-panel {
+            display: none;
+            padding: 40px;
+            background-color: #f5f5f5;
+            min-height: 100vh;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .admin-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .admin-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .logout-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Filtros de Status */
+        .status-filters {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 12px 20px;
+            border: 2px solid var(--primary-color);
+            background: white;
+            color: var(--primary-color);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .filter-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .filter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        /* Tabela de Solicitações */
+        .requests-table {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 24px;
+            overflow-x: auto;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 900px;
+        }
+
+        .table th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 16px;
+            text-align: left;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+        }
+
+        .table td {
+            padding: 16px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .table tr:hover {
+            background-color: #f0f0f0;
+        }
+
+        .status-badge {
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-align: center;
+            display: inline-block;
+            min-width: 120px;
+        }
+
+        .status-visualizar {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+
+        .status-oficina {
+            background-color: #cce5ff;
+            color: #004085;
+            border: 1px solid #b3d7ff;
+        }
+
+        .status-orcamento {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: all 0.3s;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .btn-progress {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn-edit {
+            background-color: #ffc107;
+            color: #212529;
+        }
+
+        .btn-delete {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .stats-container {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Login Modal */
+        .login-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .login-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            color: var(--primary-color);
+        }
+
+        .login-input {
+            width: 100%;
+            padding: 12px 16px;
+            margin-bottom: 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .login-btn {
+            width: 100%;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 16px;
+        }
+
+        .login-error {
+            color: #dc3545;
+            font-size: 14px;
+            text-align: center;
+            display: none;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .service-form {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                max-width: 100%;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .info-cards {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .form-section, .about-section {
+                margin: 0 24px 40px 24px;
+                padding: 24px;
+            }
+            
+            .carousel-item img {
+                height: 400px;
+            }
+            
+            .hero-text h3 {
+                font-size: 36px;
+            }
+
+            .app-bar {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .admin-panel {
+                padding: 20px;
+            }
+
+            .admin-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .admin-actions {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .status-filters {
+                justify-content: center;
+            }
+
+            .filter-btn {
+                flex: 1;
+                min-width: 120px;
+                justify-content: center;
+            }
+
+            .stats-container {
+                flex-direction: column;
+            }
+
+            .stat-card {
+                min-width: auto;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .action-btn {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="mainContainer">
+        <!-- Cabeçalho -->
+        <header class="app-bar">
+            <h1>RM Lanternagem e Pintura</h1>
+            <button class="admin-btn" id="adminBtn">
+                <span class="material-icons">admin_panel_settings</span>
+                Admin
+            </button>
+        </header>
+
+        <!-- Seção Hero com Carrossel -->
+        <section class="hero-section">
+            <div class="carousel-section">
+                <div id="servicesCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="/imagem/WhatsApp Image 2025-09-26 at 08.05.28 (1).jpeg" class="d-block w-100" alt="Pintura Automotiva">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://images.unsplash.com/photo-1626806789293-0d6e0e013f9e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="d-block w-100" alt="Lanternagem">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://images.unsplash.com/photo-1622035530538-40d8d3e0f3c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="d-block w-100" alt="Polimento">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#servicesCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Anterior</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#servicesCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Próximo</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="hero-text">
+                <h2>Excelência em</h2>
+                <h3>Lanternagem e Pintura</h3>
+                <p>Seu veículo merece o melhor cuidado</p>
+                
+                <div class="hero-buttons">
+                    <a href="#services" class="btn btn-primary">
+                        <span class="material-icons">build</span>
+                        Nossos Serviços
+                    </a>
+                    <a href="#form-section" class="btn btn-contact">
+                        <span class="material-icons">assignment</span>
+                        Solicitar Orçamento
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Serviços -->
+        <section id="services" class="section">
+            <div class="section-title">
+                <span class="material-icons">build_circle</span>
+                <h2>Nossos Serviços</h2>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1632852908805-2c42f1a53e8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+                        <div class="service-icon">
+                            <span class="material-icons">brush</span>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Pintura Automotiva</h3>
+                        <p class="service-description">Pintura completa e retoque com tintas de alta qualidade. Trabalhamos com as melhores marcas do mercado para garantir um acabamento perfeito e duradouro.</p>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1626806789293-0d6e0e013f9e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+                        <div class="service-icon">
+                            <span class="material-icons">car_repair</span>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Lanternagem</h3>
+                        <p class="service-description">Reparo de funilaria e desamassamento profissional. Recuperamos a estrutura original do seu veículo com técnicas avançadas e equipamentos de última geração.</p>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1622035530538-40d8d3e0f3c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+                        <div class="service-icon">
+                            <span class="material-icons">auto_awesome</span>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Polimento</h3>
+                        <p class="service-description">Restauração do brilho original da pintura. Eliminamos riscos, manchas e oxidação, devolvendo a aparência de novo ao seu veículo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção do Formulário -->
+        <section id="form-section" class="form-section">
+            <div class="form-title">
+                <span class="material-icons">assignment</span>
+                <h2>Solicite um Orçamento</h2>
+            </div>
+            
+            <div id="alertSuccess" class="alert alert-success">
+                Solicitação enviada com sucesso! Em breve entraremos em contato.
+            </div>
+            
+            <div id="alertError" class="alert alert-error">
+                Ocorreu um erro ao enviar sua solicitação. Tente novamente ou entre em contato diretamente pelo WhatsApp.
+            </div>
+            
+            <form class="service-form" id="serviceForm">
+                <div class="form-group">
+                    <label class="form-label" for="name">Nome Completo *</label>
+                    <input type="text" id="name" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="phone">Telefone/WhatsApp *</label>
+                    <input type="tel" id="phone" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="vehicle">Veículo (Marca/Modelo/Ano) *</label>
+                    <input type="text" id="vehicle" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="service">Serviço Desejado *</label>
+                    <select id="service" class="form-control" required>
+                        <option value="">Selecione um serviço</option>
+                        <option value="Pintura Automotiva">Pintura Automotiva</option>
+                        <option value="Lanternagem">Lanternagem</option>
+                        <option value="Polimento">Polimento</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label class="form-label" for="description">Descrição do Serviço Necessário *</label>
+                    <textarea id="description" class="form-control" placeholder="Descreva detalhadamente o serviço que você precisa..." required></textarea>
+                </div>
+                
+                <button type="submit" class="form-submit" id="submitBtn">
+                    <span class="material-icons">send</span>
+                    Enviar Solicitação
+                </button>
+            </form>
+        </section>
+
+        <!-- Seção Sobre Nós -->
+        <section class="about-section">
+            <div class="section-title">
+                <span class="material-icons" style="color: #3E0013;">info</span>
+                <h2 style="color: #3E0013;">Sobre Nós</h2>
+            </div>
+            
+            <p class="about-text">
+                A RM Lanternagem e Pintura é referência em qualidade e excelência no setor automotivo. Com mais de 15 anos de experiência, oferecemos serviços especializados em lanternagem, pintura e polimento. Nossa equipe altamente qualizada utiliza equipamentos de última geração e materiais premium para garantir a satisfação total dos nossos clientes.
+            </p>
+            
+            <div class="info-cards">
+                <div class="info-card">
+                    <span class="material-icons">verified</span>
+                    <p class="number">15+</p>
+                    <p class="label">Anos de<br>Experiência</p>
+                </div>
+                <div class="info-card">
+                    <span class="material-icons">star</span>
+                    <p class="number">5.0</p>
+                    <p class="label">Avaliação<br>dos Clientes</p>
+                </div>
+                <div class="info-card">
+                    <span class="material-icons">handshake</span>
+                    <p class="number">100%</p>
+                    <p class="label">Garantia<br>de Qualidade</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Contato -->
+        <section id="contact" class="section">
+            <div class="section-title">
+                <span class="material-icons">contact_phone</span>
+                <h2>Entre em Contato</h2>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-item" onclick="window.open('tel:+5561984586749 ')">
+                    <div class="contact-icon-wrapper">
+                        <span class="material-icons contact-icon">phone</span>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Telefone</h3>
+                        <p>(61) 9 8458-6749 </p>
+                    </div>
+                    <span class="material-icons" style="color: rgba(29, 27, 28, 0.4); font-size: 16px;">arrow_forward_ios</span>
+                </div>
+                
+                <div class="divider"></div>
+                
+                <div class="contact-item" onclick="window.open('mailto:rmlanternagem@gmail.com.br')">
+                    <div class="contact-icon-wrapper">
+                        <span class="material-icons contact-icon">email</span>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Email</h3>
+                        <p>rmlanternagem@gmail.com.br</p>
+                    </div>
+                    <span class="material-icons" style="color: rgba(29, 27, 28, 0.4); font-size: 16px;">arrow_forward_ios</span>
+                </div>
+                
+                <div class="divider"></div>
+                
+                <div class="contact-item" onclick="window.open('https://maps.google.com/?q=Rua+15,+Qd+18,+Lt+15,+Ceilândia+Sul,+Brasília-DF')">
+                    <div class="contact-icon-wrapper">
+                        <span class="material-icons contact-icon">location_on</span>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Endereço</h3>
+                        <p>Rua 15, Qd 18, Lt 15\nCeilândia Sul, Brasília-DF</p>
+                    </div>
+                    <span class="material-icons" style="color: rgba(29, 27, 28, 0.4); font-size: 16px;">arrow_forward_ios</span>
+                </div>
+                
+                <div class="divider"></div>
+                
+                <button class="whatsapp-btn" onclick="window.open('https://wa.me/5561984586749?text=Olá! Gostaria de solicitar um orçamento.')">
+                    <span class="material-icons">whatsapp</span>
+                    Falar no WhatsApp
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modal de Login -->
+    <div class="login-modal" id="loginModal">
+        <div class="login-content">
+            <h2 class="login-title">Acesso Admin</h2>
+            <input type="password" id="adminPassword" class="login-input" placeholder="Digite a senha de administrador">
+            <button class="login-btn" id="loginBtn">Entrar</button>
+            <div class="login-error" id="loginError">Senha incorreta. Tente novamente.</div>
+        </div>
+    </div>
+
+    <!-- Painel Admin -->
+    <div class="admin-panel" id="adminPanel">
+        <div class="admin-header">
+            <h1 class="admin-title">Painel Administrativo</h1>
+            <div class="admin-actions">
+                <button class="logout-btn" id="logoutBtn">
+                    <span class="material-icons">logout</span>
+                    Sair
+                </button>
+            </div>
+        </div>
+
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-number" id="totalRequests">0</div>
+                <div class="stat-label">Total de Solicitações</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="pendingRequests">0</div>
+                <div class="stat-label">Pendentes</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="inProgressRequests">0</div>
+                <div class="stat-label">Em Andamento</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="completedRequests">0</div>
+                <div class="stat-label">Concluídos</div>
+            </div>
+        </div>
+
+        <div class="status-filters">
+            <button class="filter-btn active" data-status="all">
+                <span class="material-icons">filter_list</span>
+                Todas
+            </button>
+            <button class="filter-btn" data-status="visualizar">
+                <span class="material-icons">visibility</span>
+                A Visualizar
+            </button>
+            <button class="filter-btn" data-status="oficina">
+                <span class="material-icons">build</span>
+                Na Oficina
+            </button>
+            <button class="filter-btn" data-status="orcamento">
+                <span class="material-icons">assignment</span>
+                Orçamento
+            </button>
+        </div>
+
+        <div class="requests-table">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Cliente</th>
+                        <th>Telefone</th>
+                        <th>Veículo</th>
+                        <th>Serviço</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="requestsTableBody">
+                    <!-- Dados serão carregados via JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <script>
+        // Configuração do Supabase - ATUALIZADA
+        const SUPABASE_URL = 'https://sbbhxwpjaruedanvhtex.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNiYmh4d3BqYXJ1ZWRhbnZodGV4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA2Mzc0NDQsImV4cCI6MjA3NjIxMzQ0NH0.1isMYfzmBVLl0u6hmSCrvkmz81X-8KpV6p-Wi8Yazhk';
+        
+        // Inicialização do Supabase
+        let supabase;
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inicializar Supabase
+            supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+            
+            // Inicializar carousel do Bootstrap
+            const carousel = new bootstrap.Carousel(document.getElementById('servicesCarousel'), {
+                interval: 5000,
+                wrap: true
+            });
+            
+            // Suavizar rolagem para âncoras
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // Inicializar funcionalidades do admin
+            initializeAdminFeatures();
+        });
+
+        // Elementos DOM
+        let adminBtn, loginModal, adminPanel, mainContainer, loginBtn, logoutBtn, adminPassword, loginError;
+        let serviceForm, submitBtn, alertSuccess, alertError, requestsTableBody, filterBtns;
+        let totalRequestsEl, pendingRequestsEl, inProgressRequestsEl, completedRequestsEl;
+        
+        // Senha do admin
+        const ADMIN_PASSWORD = 'admin123';
+        
+        // Estado atual
+        let currentFilter = 'all';
+        
+        function initializeAdminFeatures() {
+            // Obter elementos DOM
+            adminBtn = document.getElementById('adminBtn');
+            loginModal = document.getElementById('loginModal');
+            adminPanel = document.getElementById('adminPanel');
+            mainContainer = document.getElementById('mainContainer');
+            loginBtn = document.getElementById('loginBtn');
+            logoutBtn = document.getElementById('logoutBtn');
+            adminPassword = document.getElementById('adminPassword');
+            loginError = document.getElementById('loginError');
+            serviceForm = document.getElementById('serviceForm');
+            submitBtn = document.getElementById('submitBtn');
+            alertSuccess = document.getElementById('alertSuccess');
+            alertError = document.getElementById('alertError');
+            requestsTableBody = document.getElementById('requestsTableBody');
+            filterBtns = document.querySelectorAll('.filter-btn');
+            
+            // Elementos de estatísticas
+            totalRequestsEl = document.getElementById('totalRequests');
+            pendingRequestsEl = document.getElementById('pendingRequests');
+            inProgressRequestsEl = document.getElementById('inProgressRequests');
+            completedRequestsEl = document.getElementById('completedRequests');
+            
+            // Event Listeners
+            if (adminBtn) {
+                adminBtn.addEventListener('click', showLoginModal);
+            }
+            
+            if (loginBtn) {
+                loginBtn.addEventListener('click', handleLogin);
+            }
+            
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', handleLogout);
+            }
+            
+            if (adminPassword) {
+                adminPassword.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        handleLogin();
+                    }
+                });
+            }
+            
+            if (serviceForm) {
+                serviceForm.addEventListener('submit', handleFormSubmit);
+            }
+            
+            if (filterBtns.length > 0) {
+                filterBtns.forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        // Remove active class de todos os botões
+                        filterBtns.forEach(b => b.classList.remove('active'));
+                        // Adiciona active class ao botão clicado
+                        this.classList.add('active');
+                        currentFilter = this.getAttribute('data-status');
+                        loadRequests();
+                    });
+                });
+            }
+        }
+        
+        // Funções
+        function showLoginModal() {
+            if (loginModal) {
+                loginModal.style.display = 'flex';
+                if (adminPassword) {
+                    adminPassword.focus();
+                }
+            }
+        }
+        
+        function hideLoginModal() {
+            if (loginModal) {
+                loginModal.style.display = 'none';
+                if (adminPassword) {
+                    adminPassword.value = '';
+                }
+                if (loginError) {
+                    loginError.style.display = 'none';
+                }
+            }
+        }
+        
+        function handleLogin() {
+            if (!adminPassword) return;
+            
+            const password = adminPassword.value.trim();
+            
+            if (password === ADMIN_PASSWORD) {
+                // Login bem-sucedido
+                if (mainContainer) mainContainer.style.display = 'none';
+                if (adminPanel) adminPanel.style.display = 'block';
+                hideLoginModal();
+                loadRequests();
+            } else {
+                // Login falhou
+                if (loginError) loginError.style.display = 'block';
+                if (adminPassword) {
+                    adminPassword.value = '';
+                    adminPassword.focus();
+                }
+            }
+        }
+        
+        function handleLogout() {
+            if (mainContainer) mainContainer.style.display = 'block';
+            if (adminPanel) adminPanel.style.display = 'none';
+        }
+        
+        async function handleFormSubmit(e) {
+            e.preventDefault();
+            
+            if (!supabase) {
+                console.error('Supabase não inicializado');
+                showAlert(alertError, 'Erro de configuração. Tente novamente.');
+                return;
+            }
+            
+            // Obter dados do formulário
+            const formData = {
+                name: document.getElementById('name').value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                vehicle: document.getElementById('vehicle').value.trim(),
+                service: document.getElementById('service').value,
+                description: document.getElementById('description').value.trim(),
+                status: 'visualizar', // Status inicial
+                created_at: new Date().toISOString()
+            };
+            
+            // Validar dados
+            if (!formData.name || !formData.phone || !formData.vehicle || !formData.service || !formData.description) {
+                showAlert(alertError, 'Por favor, preencha todos os campos obrigatórios.');
+                return;
+            }
+            
+            // Mostrar loading
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<span class="spinner"></span>Enviando...';
+            submitBtn.disabled = true;
+            
+            try {
+                // Inserir dados no Supabase
+                const { data, error } = await supabase
+                    .from('service_requests')
+                    .insert([formData]);
+                
+                if (error) {
+                    throw error;
+                }
+                
+                // Sucesso
+                showAlert(alertSuccess, 'Solicitação enviada com sucesso! Em breve entraremos em contato.');
+                serviceForm.reset();
+                
+            } catch (error) {
+                console.error('Erro ao enviar solicitação:', error);
+                showAlert(alertError, 'Ocorreu um erro ao enviar sua solicitação. Tente novamente ou entre em contato diretamente pelo WhatsApp.');
+            } finally {
+                // Restaurar botão
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        }
+        
+        function showAlert(alertElement, message) {
+            alertElement.textContent = message;
+            alertElement.style.display = 'block';
+            
+            // Ocultar outros alertas
+            if (alertElement === alertSuccess) {
+                alertError.style.display = 'none';
+            } else {
+                alertSuccess.style.display = 'none';
+            }
+            
+            // Auto-ocultar após 5 segundos
+            setTimeout(() => {
+                alertElement.style.display = 'none';
+            }, 5000);
+        }
+        
+        async function loadRequests() {
+            try {
+                let query = supabase
+                    .from('service_requests')
+                    .select('*')
+                    .order('created_at', { ascending: false });
+                
+                // Aplicar filtro se necessário
+                if (currentFilter !== 'all') {
+                    query = query.eq('status', currentFilter);
+                }
+                
+                const { data: requests, error } = await query;
+                
+                if (error) {
+                    throw error;
+                }
+                
+                // Atualizar estatísticas
+                updateStats(requests);
+                
+                // Atualizar tabela
+                updateRequestsTable(requests);
+                
+            } catch (error) {
+                console.error('Erro ao carregar solicitações:', error);
+                requestsTableBody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: #dc3545;">Erro ao carregar dados</td></tr>';
+            }
+        }
+        
+        function updateStats(requests) {
+            const total = requests.length;
+            const pending = requests.filter(req => req.status === 'visualizar').length;
+            const inProgress = requests.filter(req => req.status === 'oficina').length;
+            const completed = requests.filter(req => req.status === 'orcamento').length;
+            
+            totalRequestsEl.textContent = total;
+            pendingRequestsEl.textContent = pending;
+            inProgressRequestsEl.textContent = inProgress;
+            completedRequestsEl.textContent = completed;
+        }
+        
+        function updateRequestsTable(requests) {
+            if (requests.length === 0) {
+                requestsTableBody.innerHTML = '<tr><td colspan="7" style="text-align: center;">Nenhuma solicitação encontrada</td></tr>';
+                return;
+            }
+            
+            requestsTableBody.innerHTML = requests.map(request => `
+                <tr>
+                    <td>${formatDate(request.created_at)}</td>
+                    <td>${request.name}</td>
+                    <td>${request.phone}</td>
+                    <td>${request.vehicle}</td>
+                    <td>${request.service}</td>
+                    <td>
+                        <span class="status-badge status-${request.status}">
+                            ${getStatusText(request.status)}
+                        </span>
+                    </td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="action-btn btn-progress" onclick="updateStatus(${request.id}, '${getNextStatus(request.status)}')">
+                                <span class="material-icons">arrow_forward</span>
+                                Avançar
+                            </button>
+                            <button class="action-btn btn-edit" onclick="editRequest(${request.id})">
+                                <span class="material-icons">edit</span>
+                                Editar
+                            </button>
+                            <button class="action-btn btn-delete" onclick="deleteRequest(${request.id})">
+                                <span class="material-icons">delete</span>
+                                Excluir
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+        }
+        
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('pt-BR') + ' ' + date.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+        }
+        
+        function getStatusText(status) {
+            const statusMap = {
+                'visualizar': 'A Visualizar',
+                'oficina': 'Na Oficina',
+                'orcamento': 'Orçamento'
+            };
+            return statusMap[status] || status;
+        }
+        
+        function getNextStatus(currentStatus) {
+            const statusFlow = {
+                'visualizar': 'oficina',
+                'oficina': 'orcamento',
+                'orcamento': 'visualizar' // Loop back para demonstração
+            };
+            return statusFlow[currentStatus] || 'visualizar';
+        }
+        
+        async function updateStatus(requestId, newStatus) {
+            try {
+                const { error } = await supabase
+                    .from('service_requests')
+                    .update({ status: newStatus })
+                    .eq('id', requestId);
+                
+                if (error) {
+                    throw error;
+                }
+                
+                // Recarregar dados
+                loadRequests();
+                
+            } catch (error) {
+                console.error('Erro ao atualizar status:', error);
+                alert('Erro ao atualizar status da solicitação');
+            }
+        }
+        
+        async function deleteRequest(requestId) {
+            if (!confirm('Tem certeza que deseja excluir esta solicitação?')) {
+                return;
+            }
+            
+            try {
+                const { error } = await supabase
+                    .from('service_requests')
+                    .delete()
+                    .eq('id', requestId);
+                
+                if (error) {
+                    throw error;
+                }
+                
+                // Recarregar dados
+                loadRequests();
+                
+            } catch (error) {
+                console.error('Erro ao excluir solicitação:', error);
+                alert('Erro ao excluir solicitação');
+            }
+        }
+        
+        function editRequest(requestId) {
+            // Implementar edição de solicitação
+            alert(`Editar solicitação ${requestId} - Funcionalidade em desenvolvimento`);
+        }
+    </script>
+</body>
+</html>
