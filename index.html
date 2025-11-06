@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RM Lanternagem e Pintura</title>
+    <title>Orlando Car Lanternagem e Pintura</title>
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -394,6 +394,29 @@
             background-color: #22C55E;
         }
 
+        .instagram-btn {
+            width: 100%;
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+            color: white;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s;
+            margin-top: 12px;
+        }
+
+        .instagram-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
         /* Form Section */
         .form-section {
             padding: 40px;
@@ -551,10 +574,34 @@
             display: flex;
             gap: 12px;
             flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background-color: rgba(139, 21, 56, 0.1);
+            padding: 8px 16px;
+            border-radius: 8px;
+            color: var(--primary-color);
+            font-weight: 500;
         }
 
         .logout-btn {
             background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-btn {
+            background-color: #6c757d;
             color: white;
             border: none;
             padding: 10px 20px;
@@ -753,6 +800,30 @@
             width: 100%;
             max-width: 400px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .close-modal:hover {
+            background-color: #f0f0f0;
+            color: #333;
         }
 
         .login-title {
@@ -761,12 +832,23 @@
             margin-bottom: 20px;
             text-align: center;
             color: var(--primary-color);
+            padding-right: 30px;
+        }
+
+        .login-input-group {
+            margin-bottom: 16px;
+        }
+
+        .login-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
         }
 
         .login-input {
             width: 100%;
             padding: 12px 16px;
-            margin-bottom: 16px;
             border: 1px solid #ddd;
             border-radius: 8px;
             font-size: 16px;
@@ -885,7 +967,7 @@
     <div class="container" id="mainContainer">
         <!-- Cabeçalho -->
         <header class="app-bar">
-            <h1>RM Lanternagem e Pintura</h1>
+            <h1>Orlando Car Lanternagem e Pintura</h1>
             <button class="admin-btn" id="adminBtn">
                 <span class="material-icons">admin_panel_settings</span>
                 Admin
@@ -903,13 +985,13 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="/imagem/WhatsApp Image 2025-09-26 at 08.05.28 (1).jpeg" class="d-block w-100" alt="Pintura Automotiva">
+                            <img src="/imagem/pintura-para-decorar-carros-1536x1025.webp" class="d-block w-100" alt="Pintura Automotiva">
                         </div>
                         <div class="carousel-item">
-                            <img src="https://images.unsplash.com/photo-1626806789293-0d6e0e013f9e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="d-block w-100" alt="Lanternagem">
+                            <img src="/imagem/lanternagem.jpg" class="d-block w-100" alt="Lanternagem">
                         </div>
                         <div class="carousel-item">
-                            <img src="https://images.unsplash.com/photo-1622035530538-40d8d3e0f3c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="d-block w-100" alt="Polimento">
+                            <img src="/imagem/polimento-1.jpg" class="d-block w-100" alt="Polimento">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#servicesCarousel" data-bs-slide="prev">
@@ -950,7 +1032,7 @@
             
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1632852908805-2c42f1a53e8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+                    <div class="service-image" style="background-image: url('/imagem/pintura-de-carro.jpg');">
                         <div class="service-icon">
                             <span class="material-icons">brush</span>
                         </div>
@@ -962,7 +1044,7 @@
                 </div>
 
                 <div class="service-card">
-                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1626806789293-0d6e0e013f9e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+                    <div class="service-image" style="background-image: url('/imagem/imagem-homem-fazendo-lanternagem-automotiva-carro_0-1024x683.jpg');">
                         <div class="service-icon">
                             <span class="material-icons">car_repair</span>
                         </div>
@@ -974,7 +1056,7 @@
                 </div>
 
                 <div class="service-card">
-                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1622035530538-40d8d3e0f3c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+                    <div class="service-image" style="background-image: url('/imagem/polishing-car-after-painting-detailing-car-from-outside-device-polishing-hands2.jpg');">
                         <div class="service-icon">
                             <span class="material-icons">auto_awesome</span>
                         </div>
@@ -1049,7 +1131,7 @@
             </div>
             
             <p class="about-text">
-                A RM Lanternagem e Pintura é referência em qualidade e excelência no setor automotivo. Com mais de 15 anos de experiência, oferecemos serviços especializados em lanternagem, pintura e polimento. Nossa equipe altamente qualizada utiliza equipamentos de última geração e materiais premium para garantir a satisfação total dos nossos clientes.
+                A Orlando Car Lanternagem e Pintura é referência em qualidade e excelência no setor automotivo. Com mais de 15 anos de experiência, oferecemos serviços especializados em lanternagem, pintura e polimento. Nossa equipe altamente qualizada utiliza equipamentos de última geração e materiais premium para garantir a satisfação total dos nossos clientes.
             </p>
             
             <div class="info-cards">
@@ -1105,13 +1187,26 @@
                 
                 <div class="divider"></div>
                 
-                <div class="contact-item" onclick="window.open('https://maps.google.com/?q=Rua+15,+Qd+18,+Lt+15,+Ceilândia+Sul,+Brasília-DF')">
+                <div class="contact-item" onclick="window.open('https://www.instagram.com/orlandocarlanternagem/', '_blank')">
+                    <div class="contact-icon-wrapper">
+                        <span class="material-icons contact-icon">photo_camera</span>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Instagram</h3>
+                        <p>@orlandocarlanternagem</p>
+                    </div>
+                    <span class="material-icons" style="color: rgba(29, 27, 28, 0.4); font-size: 16px;">arrow_forward_ios</span>
+                </div>
+                
+                <div class="divider"></div>
+                
+                <div class="contact-item" onclick="window.open('https://maps.app.goo.gl/pH7mYagGkVJA1NBw7')">
                     <div class="contact-icon-wrapper">
                         <span class="material-icons contact-icon">location_on</span>
                     </div>
                     <div class="contact-info">
                         <h3>Endereço</h3>
-                        <p>Rua 15, Qd 18, Lt 15\nCeilândia Sul, Brasília-DF</p>
+                        <p>Sde quadra 02 cj a lote 06 loja 01, Taguatinga Norte - Taguatinga, Brasília - DF</p>
                     </div>
                     <span class="material-icons" style="color: rgba(29, 27, 28, 0.4); font-size: 16px;">arrow_forward_ios</span>
                 </div>
@@ -1122,6 +1217,11 @@
                     <span class="material-icons">whatsapp</span>
                     Falar no WhatsApp
                 </button>
+
+                <button class="instagram-btn" onclick="window.open('https://www.instagram.com/orlandocarlanternagem/', '_blank')">
+                    <span class="material-icons">photo_camera</span>
+                    Seguir no Instagram
+                </button>
             </div>
         </section>
     </div>
@@ -1129,10 +1229,18 @@
     <!-- Modal de Login -->
     <div class="login-modal" id="loginModal">
         <div class="login-content">
+            <button class="close-modal" id="closeModal">&times;</button>
             <h2 class="login-title">Acesso Admin</h2>
-            <input type="password" id="adminPassword" class="login-input" placeholder="Digite a senha de administrador">
+            <div class="login-input-group">
+                <label class="login-label" for="adminName">Nome de Usuário</label>
+                <input type="text" id="adminName" class="login-input" placeholder="Digite seu nome">
+            </div>
+            <div class="login-input-group">
+                <label class="login-label" for="adminPassword">Senha</label>
+                <input type="password" id="adminPassword" class="login-input" placeholder="Digite a senha">
+            </div>
             <button class="login-btn" id="loginBtn">Entrar</button>
-            <div class="login-error" id="loginError">Senha incorreta. Tente novamente.</div>
+            <div class="login-error" id="loginError">Credenciais incorretas. Tente novamente.</div>
         </div>
     </div>
 
@@ -1141,6 +1249,10 @@
         <div class="admin-header">
             <h1 class="admin-title">Painel Administrativo</h1>
             <div class="admin-actions">
+                <div class="user-info" id="userInfo">
+                    <span class="material-icons">person</span>
+                    <span id="userName">Administrador</span>
+                </div>
                 <button class="logout-btn" id="logoutBtn">
                     <span class="material-icons">logout</span>
                     Sair
@@ -1249,15 +1361,19 @@
         });
 
         // Elementos DOM
-        let adminBtn, loginModal, adminPanel, mainContainer, loginBtn, logoutBtn, adminPassword, loginError;
+        let adminBtn, loginModal, adminPanel, mainContainer, loginBtn, logoutBtn, backBtn, closeModal, adminName, adminPassword, loginError, userInfo, userName;
         let serviceForm, submitBtn, alertSuccess, alertError, requestsTableBody, filterBtns;
         let totalRequestsEl, pendingRequestsEl, inProgressRequestsEl, completedRequestsEl;
         
-        // Senha do admin
-        const ADMIN_PASSWORD = 'admin123';
+        // Credenciais do admin
+        const ADMIN_CREDENTIALS = {
+            username: 'admin',
+            password: 'admin123'
+        };
         
         // Estado atual
         let currentFilter = 'all';
+        let currentUserName = '';
         
         function initializeAdminFeatures() {
             // Obter elementos DOM
@@ -1267,8 +1383,13 @@
             mainContainer = document.getElementById('mainContainer');
             loginBtn = document.getElementById('loginBtn');
             logoutBtn = document.getElementById('logoutBtn');
+            backBtn = document.getElementById('backBtn');
+            closeModal = document.getElementById('closeModal');
+            adminName = document.getElementById('adminName');
             adminPassword = document.getElementById('adminPassword');
             loginError = document.getElementById('loginError');
+            userInfo = document.getElementById('userInfo');
+            userName = document.getElementById('userName');
             serviceForm = document.getElementById('serviceForm');
             submitBtn = document.getElementById('submitBtn');
             alertSuccess = document.getElementById('alertSuccess');
@@ -1293,6 +1414,23 @@
             
             if (logoutBtn) {
                 logoutBtn.addEventListener('click', handleLogout);
+            }
+            
+            if (backBtn) {
+                backBtn.addEventListener('click', handleBack);
+            }
+            
+            if (closeModal) {
+                closeModal.addEventListener('click', hideLoginModal);
+            }
+            
+            // Fechar modal clicando fora
+            if (loginModal) {
+                loginModal.addEventListener('click', function(e) {
+                    if (e.target === loginModal) {
+                        hideLoginModal();
+                    }
+                });
             }
             
             if (adminPassword) {
@@ -1325,8 +1463,8 @@
         function showLoginModal() {
             if (loginModal) {
                 loginModal.style.display = 'flex';
-                if (adminPassword) {
-                    adminPassword.focus();
+                if (adminName) {
+                    adminName.focus();
                 }
             }
         }
@@ -1334,6 +1472,9 @@
         function hideLoginModal() {
             if (loginModal) {
                 loginModal.style.display = 'none';
+                if (adminName) {
+                    adminName.value = '';
+                }
                 if (adminPassword) {
                     adminPassword.value = '';
                 }
@@ -1344,12 +1485,17 @@
         }
         
         function handleLogin() {
-            if (!adminPassword) return;
+            if (!adminName || !adminPassword) return;
             
+            const username = adminName.value.trim();
             const password = adminPassword.value.trim();
             
-            if (password === ADMIN_PASSWORD) {
+            if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
                 // Login bem-sucedido
+                currentUserName = username;
+                if (userName) {
+                    userName.textContent = username.charAt(0).toUpperCase() + username.slice(1);
+                }
                 if (mainContainer) mainContainer.style.display = 'none';
                 if (adminPanel) adminPanel.style.display = 'block';
                 hideLoginModal();
@@ -1365,18 +1511,18 @@
         }
         
         function handleLogout() {
+            currentUserName = '';
+            if (mainContainer) mainContainer.style.display = 'block';
+            if (adminPanel) adminPanel.style.display = 'none';
+        }
+        
+        function handleBack() {
             if (mainContainer) mainContainer.style.display = 'block';
             if (adminPanel) adminPanel.style.display = 'none';
         }
         
         async function handleFormSubmit(e) {
             e.preventDefault();
-            
-            if (!supabase) {
-                console.error('Supabase não inicializado');
-                showAlert(alertError, 'Erro de configuração. Tente novamente.');
-                return;
-            }
             
             // Obter dados do formulário
             const formData = {
@@ -1385,7 +1531,7 @@
                 vehicle: document.getElementById('vehicle').value.trim(),
                 service: document.getElementById('service').value,
                 description: document.getElementById('description').value.trim(),
-                status: 'visualizar', // Status inicial
+                status: 'visualizar',
                 created_at: new Date().toISOString()
             };
             
@@ -1410,18 +1556,47 @@
                     throw error;
                 }
                 
-                // Sucesso
-                showAlert(alertSuccess, 'Solicitação enviada com sucesso! Em breve entraremos em contato.');
-                serviceForm.reset();
+                // Sucesso - Redirecionar para WhatsApp
+                redirectToWhatsApp(formData);
                 
             } catch (error) {
                 console.error('Erro ao enviar solicitação:', error);
                 showAlert(alertError, 'Ocorreu um erro ao enviar sua solicitação. Tente novamente ou entre em contato diretamente pelo WhatsApp.');
-            } finally {
-                // Restaurar botão
+                
+                // Restaurar botão em caso de erro
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
             }
+        }
+        
+        function redirectToWhatsApp(formData) {
+            // Formatar mensagem para WhatsApp
+            const message = `Olá! Gostaria de solicitar um orçamento:\n\n` +
+                        `*Nome:* ${formData.name}\n` +
+                        `*Telefone:* ${formData.phone}\n` +
+                        `*Veículo:* ${formData.vehicle}\n` +
+                        `*Serviço:* ${formData.service}\n` +
+                        `*Descrição:* ${formData.description}\n\n` +
+                        `_Solicitação enviada via site_`;
+            
+            // Codificar mensagem para URL
+            const encodedMessage = encodeURIComponent(message);
+            
+            // Número da empresa (formato internacional sem caracteres especiais)
+            const phoneNumber = '5561984586749';
+            
+            // Redirecionar para WhatsApp
+            window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+            
+            // Mostrar mensagem de sucesso
+            showAlert(alertSuccess, 'Solicitação enviada com sucesso! Você será redirecionado para o WhatsApp.');
+            
+            // Limpar formulário após um tempo
+            setTimeout(() => {
+                serviceForm.reset();
+                submitBtn.innerHTML = '<span class="material-icons">send</span>Enviar Solicitação';
+                submitBtn.disabled = false;
+            }, 2000);
         }
         
         function showAlert(alertElement, message) {
@@ -1539,13 +1714,25 @@
             const statusFlow = {
                 'visualizar': 'oficina',
                 'oficina': 'orcamento',
-                'orcamento': 'visualizar' // Loop back para demonstração
+                'orcamento': 'visualizar'
             };
             return statusFlow[currentStatus] || 'visualizar';
         }
         
         async function updateStatus(requestId, newStatus) {
             try {
+                // Primeiro buscar os dados da solicitação
+                const { data: request, error: fetchError } = await supabase
+                    .from('service_requests')
+                    .select('*')
+                    .eq('id', requestId)
+                    .single();
+                
+                if (fetchError) {
+                    throw fetchError;
+                }
+                
+                // Atualizar status no banco de dados
                 const { error } = await supabase
                     .from('service_requests')
                     .update({ status: newStatus })
@@ -1555,12 +1742,41 @@
                     throw error;
                 }
                 
+                // Enviar mensagem no WhatsApp conforme o status
+                await sendStatusUpdateMessage(request, newStatus);
+                
                 // Recarregar dados
                 loadRequests();
                 
             } catch (error) {
                 console.error('Erro ao atualizar status:', error);
                 alert('Erro ao atualizar status da solicitação');
+            }
+        }
+        
+        async function sendStatusUpdateMessage(request, newStatus) {
+            const statusMessages = {
+                'visualizar': `Olá ${request.name}! 👋\n\nSua solicitação para *${request.service}* no veículo *${request.vehicle}* está sendo analisada pela nossa equipe.\n\n🔍 *Status: A Visualizar*\nNossa equipe técnica está avaliando o seu caso para fornecer o melhor atendimento.\n\nAgradecemos sua confiança!`,
+                
+                'oficina': `Olá ${request.name}! 🛠️\n\nÓtima notícia! Seu veículo *${request.vehicle}* já está conosco na oficina para o serviço de *${request.service}*.\n\n⚙️ *Status: Na Oficina*\nEstamos trabalhando com todo cuidado e em breve teremos novidades.\n\nAgradecemos sua paciência!`,
+                
+                'orcamento': `Olá ${request.name}! 📋\n\nSeu orçamento para *${request.service}* no veículo *${request.vehicle}* está pronto!\n\n💰 *Status: Orçamento Disponível*\nEntre em contato conosco para conversarmos sobre os valores e agendarmos o serviço.\n\nEstamos à disposição!`
+            };
+            
+            const message = statusMessages[newStatus];
+            
+            if (message) {
+                // Formatar número de telefone (remover caracteres não numéricos)
+                const phoneNumber = request.phone.replace(/\D/g, '');
+                
+                // Se o número não tiver código do país, adicionar (assumindo Brasil)
+                const formattedPhone = phoneNumber.startsWith('55') ? phoneNumber : `55${phoneNumber}`;
+                
+                // Codificar mensagem para URL
+                const encodedMessage = encodeURIComponent(message);
+                
+                // Abrir WhatsApp com a mensagem
+                window.open(`https://wa.me/${formattedPhone}?text=${encodedMessage}`, '_blank');
             }
         }
         
