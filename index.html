@@ -511,6 +511,40 @@
             font-size: 20px;
         }
 
+        /* Checkbox Styles */
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .checkbox-item:hover {
+            background-color: rgba(139, 21, 56, 0.05);
+            border-color: var(--primary-color);
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary-color);
+        }
+
+        .checkbox-label {
+            font-weight: 500;
+            color: #333;
+        }
+
         /* Alert Styles */
         .alert {
             padding: 12px 16px;
@@ -738,11 +772,6 @@
         .btn-progress {
             background-color: #28a745;
             color: white;
-        }
-
-        .btn-edit {
-            background-color: #ffc107;
-            color: #212529;
         }
 
         .btn-delete {
@@ -1096,19 +1125,40 @@
                 </div>
                 
                 <div class="form-group">
-                    <label class="form-label" for="vehicle">Veículo (Marca/Modelo/Ano) *</label>
-                    <input type="text" id="vehicle" class="form-control" required>
+                    <label class="form-label" for="marca">Marca do Veículo *</label>
+                    <input type="text" id="marca" class="form-control" required>
                 </div>
                 
                 <div class="form-group">
-                    <label class="form-label" for="service">Serviço Desejado *</label>
-                    <select id="service" class="form-control" required>
-                        <option value="">Selecione um serviço</option>
-                        <option value="Pintura Automotiva">Pintura Automotiva</option>
-                        <option value="Lanternagem">Lanternagem</option>
-                        <option value="Polimento">Polimento</option>
-                        <option value="Outro">Outro</option>
-                    </select>
+                    <label class="form-label" for="modelo">Modelo do Veículo *</label>
+                    <input type="text" id="modelo" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="ano">Ano do Veículo *</label>
+                    <input type="number" id="ano" class="form-control" min="1950" max="2025" required>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label class="form-label">Serviços Desejados *</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="service-pintura" name="services" value="Pintura Automotiva">
+                            <label class="checkbox-label" for="service-pintura">Pintura Automotiva</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="service-lanternagem" name="services" value="Lanternagem">
+                            <label class="checkbox-label" for="service-lanternagem">Lanternagem</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="service-polimento" name="services" value="Polimento">
+                            <label class="checkbox-label" for="service-polimento">Polimento</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="service-outro" name="services" value="Outro">
+                            <label class="checkbox-label" for="service-outro">Outro</label>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="form-group full-width">
@@ -1174,26 +1224,26 @@
                 
                 <div class="divider"></div>
                 
-                <div class="contact-item" onclick="window.open('mailto:rmlanternagem@gmail.com.br')">
+                <div class="contact-item" onclick="window.open('mailto:Orlando.mor35@gmail.com')">
                     <div class="contact-icon-wrapper">
                         <span class="material-icons contact-icon">email</span>
                     </div>
                     <div class="contact-info">
-                        <h3>Email</h3>
-                        <p>rmlanternagem@gmail.com.br</p>
+                        <h3>E-mail</h3>
+                        <p>Orlando.mor35@gmail.com</p>
                     </div>
                     <span class="material-icons" style="color: rgba(29, 27, 28, 0.4); font-size: 16px;">arrow_forward_ios</span>
                 </div>
                 
                 <div class="divider"></div>
                 
-                <div class="contact-item" onclick="window.open('https://www.instagram.com/orlandocarlanternagem/', '_blank')">
+                <div class="contact-item" onclick="window.open('https://www.instagram.com/orlandocaroficina/', '_blank')">
                     <div class="contact-icon-wrapper">
                         <span class="material-icons contact-icon">photo_camera</span>
                     </div>
                     <div class="contact-info">
                         <h3>Instagram</h3>
-                        <p>@orlandocarlanternagem</p>
+                        <p>@orlandocaroficina</p>
                     </div>
                     <span class="material-icons" style="color: rgba(29, 27, 28, 0.4); font-size: 16px;">arrow_forward_ios</span>
                 </div>
@@ -1218,7 +1268,7 @@
                     Falar no WhatsApp
                 </button>
 
-                <button class="instagram-btn" onclick="window.open('https://www.instagram.com/orlandocarlanternagem/', '_blank')">
+                <button class="instagram-btn" onclick="window.open('https://www.instagram.com/orlandocaroficina/', '_blank')">
                     <span class="material-icons">photo_camera</span>
                     Seguir no Instagram
                 </button>
@@ -1306,7 +1356,7 @@
                         <th>Cliente</th>
                         <th>Telefone</th>
                         <th>Veículo</th>
-                        <th>Serviço</th>
+                        <th>Serviços</th>
                         <th>Status</th>
                         <th>Ações</th>
                     </tr>
@@ -1525,18 +1575,28 @@
             e.preventDefault();
             
             // Obter dados do formulário
+            const selectedServices = Array.from(document.querySelectorAll('input[name="services"]:checked'))
+                .map(checkbox => checkbox.value);
+            
+            if (selectedServices.length === 0) {
+                showAlert(alertError, 'Por favor, selecione pelo menos um serviço.');
+                return;
+            }
+            
             const formData = {
                 name: document.getElementById('name').value.trim(),
                 phone: document.getElementById('phone').value.trim(),
-                vehicle: document.getElementById('vehicle').value.trim(),
-                service: document.getElementById('service').value,
+                marca: document.getElementById('marca').value.trim(),
+                modelo: document.getElementById('modelo').value.trim(),
+                ano: document.getElementById('ano').value.trim(),
+                services: selectedServices.join(', '),
                 description: document.getElementById('description').value.trim(),
                 status: 'visualizar',
                 created_at: new Date().toISOString()
             };
             
             // Validar dados
-            if (!formData.name || !formData.phone || !formData.vehicle || !formData.service || !formData.description) {
+            if (!formData.name || !formData.phone || !formData.marca || !formData.modelo || !formData.ano || !formData.description) {
                 showAlert(alertError, 'Por favor, preencha todos os campos obrigatórios.');
                 return;
             }
@@ -1574,8 +1634,8 @@
             const message = `Olá! Gostaria de solicitar um orçamento:\n\n` +
                         `*Nome:* ${formData.name}\n` +
                         `*Telefone:* ${formData.phone}\n` +
-                        `*Veículo:* ${formData.vehicle}\n` +
-                        `*Serviço:* ${formData.service}\n` +
+                        `*Veículo:* ${formData.marca} ${formData.modelo} ${formData.ano}\n` +
+                        `*Serviços:* ${formData.services}\n` +
                         `*Descrição:* ${formData.description}\n\n` +
                         `_Solicitação enviada via site_`;
             
@@ -1669,8 +1729,8 @@
                     <td>${formatDate(request.created_at)}</td>
                     <td>${request.name}</td>
                     <td>${request.phone}</td>
-                    <td>${request.vehicle}</td>
-                    <td>${request.service}</td>
+                    <td>${request.marca} ${request.modelo} ${request.ano}</td>
+                    <td>${request.services}</td>
                     <td>
                         <span class="status-badge status-${request.status}">
                             ${getStatusText(request.status)}
@@ -1681,10 +1741,6 @@
                             <button class="action-btn btn-progress" onclick="updateStatus(${request.id}, '${getNextStatus(request.status)}')">
                                 <span class="material-icons">arrow_forward</span>
                                 Avançar
-                            </button>
-                            <button class="action-btn btn-edit" onclick="editRequest(${request.id})">
-                                <span class="material-icons">edit</span>
-                                Editar
                             </button>
                             <button class="action-btn btn-delete" onclick="deleteRequest(${request.id})">
                                 <span class="material-icons">delete</span>
@@ -1756,11 +1812,11 @@
         
         async function sendStatusUpdateMessage(request, newStatus) {
             const statusMessages = {
-                'visualizar': `Olá ${request.name}! 👋\n\nSua solicitação para *${request.service}* no veículo *${request.vehicle}* está sendo analisada pela nossa equipe.\n\n🔍 *Status: A Visualizar*\nNossa equipe técnica está avaliando o seu caso para fornecer o melhor atendimento.\n\nAgradecemos sua confiança!`,
+                'visualizar': `Olá ${request.name}! 👋\n\nSua solicitação para *${request.services}* no veículo *${request.marca} ${request.modelo} ${request.ano}* está sendo analisada pela nossa equipe.\n\n🔍 *Status: A Visualizar*\nNossa equipe técnica está avaliando o seu caso para fornecer o melhor atendimento.\n\nAgradecemos sua confiança!`,
                 
-                'oficina': `Olá ${request.name}! 🛠️\n\nÓtima notícia! Seu veículo *${request.vehicle}* já está conosco na oficina para o serviço de *${request.service}*.\n\n⚙️ *Status: Na Oficina*\nEstamos trabalhando com todo cuidado e em breve teremos novidades.\n\nAgradecemos sua paciência!`,
+                'oficina': `Olá ${request.name}! 🛠️\n\nÓtima notícia! Seu veículo *${request.marca} ${request.modelo} ${request.ano}* já está conosco na oficina para o serviço de *${request.services}*.\n\n⚙️ *Status: Na Oficina*\nEstamos trabalhando com todo cuidado e em breve teremos novidades.\n\nAgradecemos sua paciência!`,
                 
-                'orcamento': `Olá ${request.name}! 📋\n\nSeu orçamento para *${request.service}* no veículo *${request.vehicle}* está pronto!\n\n💰 *Status: Orçamento Disponível*\nEntre em contato conosco para conversarmos sobre os valores e agendarmos o serviço.\n\nEstamos à disposição!`
+                'orcamento': `Olá ${request.name}! 📋\n\nSeu orçamento para *${request.services}* no veículo *${request.marca} ${request.modelo} ${request.ano}* está pronto!\n\n💰 *Status: Orçamento Disponível*\nEntre em contato conosco para conversarmos sobre os valores e agendarmos o serviço.\n\nEstamos à disposição!`
             };
             
             const message = statusMessages[newStatus];
@@ -1803,12 +1859,6 @@
                 alert('Erro ao excluir solicitação');
             }
         }
-        
-        function editRequest(requestId) {
-            // Implementar edição de solicitação
-            alert(`Editar solicitação ${requestId} - Funcionalidade em desenvolvimento`);
-        }
     </script>
 </body>
-
 </html>
